@@ -146,7 +146,7 @@ class EpiOAuth
     curl_setopt($ch, CURLOPT_TIMEOUT, $this->requestTimeout);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectionTimeout);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    if(isset($_SERVER ['SERVER_ADDR']) && !empty($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] != '127.0.0.1')
+    if(isset($_SERVER ['SERVER_ADDR']) && !empty($_SERVER['SERVER_ADDR']) && ($_SERVER['SERVER_ADDR'] != '127.0.0.1' && $_SERVER['SERVER_ADDR'] != '::1'))
       curl_setopt($ch, CURLOPT_INTERFACE, $_SERVER ['SERVER_ADDR']);
 
     if($this->useSSL === true)
